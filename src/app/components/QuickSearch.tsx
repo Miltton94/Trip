@@ -1,41 +1,56 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const QuickSearch = () => {
   return (
-    <div className="p-5 xl:container xl:mx-auto">
-      <div className="flex items-center space-x-5">
-        <span className="h-[1px] w-full bg-grayLight" />
-
-        <h2 className="whitespace-nowrap font-medium text-grayPrimary">
+    <div className="container mx-auto p-5">
+      <div className="flex items-center">
+        <div className="h-[1px] w-full bg-grayLight"></div>
+        <h2 className="whitespace-nowrap px-5 font-medium text-grayPrimary">
           Tente pesquisar por
         </h2>
-
-        <span className="h-[1px] w-full bg-grayLight" />
+        <div className="h-[1px] w-full bg-grayLight"></div>
       </div>
 
-      <div className="mt-5 flex w-full justify-between">
+      <div className="mt-5 flex w-full justify-between lg:mt-10 lg:justify-center lg:gap-40">
         <div className="flex flex-col items-center gap-1">
-          <Image width={36} height={36} src="/hotel-icon.png" alt="Hotel" />
-
-          <p className="text-sm text-grayPrimary">Hotel</p>
+          <Link
+            href={`/trips/search?text=hotel`}
+            className="flex flex-col items-center transition-all hover:text-primary"
+          >
+            <Image width={35} height={35} src="/hotel-icon.png" alt="Hotel" />
+            <p className="text-sm text-grayPrimary lg:text-base">Hotel</p>
+          </Link>
         </div>
 
         <div className="flex flex-col items-center gap-1">
-          <Image width={36} height={36} src="/farm-icon.png" alt="Hotel" />
-
-          <p className="text-sm text-grayPrimary">Fazenda</p>
+          <Link
+            href="/trips/search?text=fazenda"
+            className="flex flex-col items-center transition-all hover:text-primary"
+          >
+            <Image width={35} height={35} src="/farm-icon.png" alt="Fazenda" />
+            <p className="text-sm text-grayPrimary lg:text-base">Fazenda</p>
+          </Link>
         </div>
 
         <div className="flex flex-col items-center gap-1">
-          <Image width={36} height={36} src="/cottage-icon.png" alt="Hotel" />
-
-          <p className="text-sm text-grayPrimary">Chalé</p>
+          <Link
+            href="/trips/search?text=Chalé"
+            className="flex flex-col items-center transition-all hover:text-primary"
+          >
+            <Image width={35} height={35} src="/cottage-icon.png" alt="Chalé" />
+            <p className="text-sm text-grayPrimary lg:text-base">Chalé</p>
+          </Link>
         </div>
 
         <div className="flex flex-col items-center gap-1">
-          <Image width={36} height={36} src="/inn-icon.png" alt="Hotel" />
-
-          <p className="text-sm text-grayPrimary">Pousada</p>
+          <Link
+            href="/trips/search?text=pousada"
+            className="flex flex-col items-center transition-all hover:text-primary"
+          >
+            <Image width={35} height={35} src="/inn-icon.png" alt="Pousada" />
+            <p className="text-sm text-grayPrimary lg:text-base">Pousada</p>
+          </Link>
         </div>
       </div>
     </div>

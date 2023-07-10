@@ -11,7 +11,7 @@ const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   return (
-    <div className="flex h-24 items-center justify-between px-5 xl:container xl:mx-auto">
+    <div className="container mx-auto flex min-h-[6rem] items-center justify-between px-5">
       <Link href="/">
         <Image src="/logo.svg" width={183} height={32} alt="Full Stack" />
       </Link>
@@ -40,9 +40,15 @@ const Header = () => {
           />
 
           {menuIsOpen && (
-            <div className="absolute left-0 top-11 flex h-full w-full flex-col items-center justify-center rounded-lg bg-white shadow-md">
+            <div className="absolute left-0 top-11 flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white shadow-md">
+              <Link href="/my-trips">
+                <button className="border-b border-solid border-grayLight pb-2 text-sm font-semibold text-primary">
+                  Minhas Viagens
+                </button>
+              </Link>
+
               <button
-                className="text-sm font-semibold text-primary"
+                className="pt-2 text-sm font-semibold text-primary"
                 onClick={() => signOut()}
               >
                 Logout

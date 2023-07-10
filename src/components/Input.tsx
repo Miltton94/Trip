@@ -1,29 +1,33 @@
-import { ComponentPropsWithoutRef, LegacyRef, forwardRef } from 'react'
+import { InputHTMLAttributes, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-interface InputProps extends ComponentPropsWithoutRef<'input'> {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: boolean
   errorMessage?: string
 }
 
-function Input(
-  { className, error, errorMessage, ...props }: InputProps,
-  ref: LegacyRef<HTMLInputElement> | undefined,
-) {
-  const inputClassName = twMerge(
-    'rounded-lg border w-full border-gray-300 bg-white p-2 text-sm font-normal text-primaryDarker placeholder-black placeholder-opacity-20 outline-none transition-all',
-    error ? 'border-red-500' : 'focus:ring-1 focus:ring-primary',
-    className,
-  )
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ error, errorMessage, ...props }, ref) => {
+    return (
+      <div className="flex w-full flex-col">
+        <input
+          ref={ref}
+          {...props}
+          className={twMerge(
+            'text-primaryDarker w-full rounded-lg border border-gray-300 bg-white p-2 text-sm font-normal placeholder-black placeholder-opacity-20 outline-none transition-all',
+            error ? 'border-red-500' : 'focus:ring-1 focus:ring-primary',
+            props.className,
+          )}
+        />
 
-  return (
-    <div className="flex w-full flex-col">
-      <input ref={ref} className={inputClassName} {...props} />
-      {error && errorMessage && (
-        <span className="mt-1 text-xs text-red-400">{errorMessage}</span>
-      )}
-    </div>
-  )
-}
+        {error && errorMessage && (
+          <span className="mt-1 text-xs text-red-400">{errorMessage}</span>
+        )}
+      </div>
+    )
+  },
+)
 
-export default forwardRef(Input)
+Input.displayName = 'Input'
+
+export default Input
