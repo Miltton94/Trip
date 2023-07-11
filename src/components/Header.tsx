@@ -40,7 +40,7 @@ const Header = () => {
           />
 
           {menuIsOpen && (
-            <div className="absolute left-0 top-11 flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white shadow-md">
+            <div className="absolute left-0 top-11 z-10 flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white shadow-md">
               <Link href="/my-trips">
                 <button className="border-b border-solid border-grayLight pb-2 text-sm font-semibold text-primary">
                   Minhas Viagens
